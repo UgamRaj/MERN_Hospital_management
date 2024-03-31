@@ -131,7 +131,7 @@ const getUserDetails = catchError(async (req, res, next) => {
 });
 
 //! Logout
-const logoutAdmin = catchError(async (req, res, next) => {
+const adminLogout = catchError(async (req, res, next) => {
   res
     .status(201)
     .cookie("adminToken", "", {
@@ -141,11 +141,23 @@ const logoutAdmin = catchError(async (req, res, next) => {
     .json({ success: true, message: "Admin Logged Out Successfully" });
 });
 
+//! Patient Logout
+const patientLogout = catchError(async (req, res, next) => {
+  res
+    .status(201)
+    .cookie("patientToken", "", {
+      httpOnly: true,
+      expires: new Date(Date.now()),
+    })
+    .json({ success: true, message: "Patient Logged Out Successfully" });
+});
+
 export {
   patientRegister,
   userLogin,
   addNewAdmin,
   getAllDoctors,
   getUserDetails,
-  logoutAdmin,
+  adminLogout,
+  patientLogout,
 };

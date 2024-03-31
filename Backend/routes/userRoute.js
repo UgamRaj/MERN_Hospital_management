@@ -5,7 +5,8 @@ import {
   patientRegister,
   getAllDoctors,
   getUserDetails,
-  logoutAdmin,
+  adminLogout,
+  patientLogout,
 } from "../controllers/userController.js";
 import {
   isAdminAuthenticated,
@@ -20,6 +21,7 @@ router.post("/admin/addnew", isAdminAuthenticated, addNewAdmin);
 router.get("/doctors", getAllDoctors);
 router.get("/admin/me", isAdminAuthenticated, getUserDetails);
 router.get("/patient/me", isPatientAuthenticated, getUserDetails);
-router.get("/admin/logout", isAdminAuthenticated, logoutAdmin);
+router.get("/admin/logout", isAdminAuthenticated, adminLogout);
+router.get("/patient/logout", isPatientAuthenticated, patientLogout);
 
 export default router;
