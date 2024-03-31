@@ -7,6 +7,8 @@ import fileUpload from "express-fileupload";
 import cloudinary from "cloudinary";
 import messageRoute from "./routes/messageRoute.js";
 import userRoute from "./routes/userRoute.js";
+import appointmentRoute from "./routes/appointmentRoute.js";
+
 import { errorMiddleware } from "./middleware/errorMiddleware.js";
 
 const app = express();
@@ -33,6 +35,7 @@ app.use(
 
 app.use("/api/v1/message", messageRoute);
 app.use("/api/v1/user", userRoute);
+app.use("/api/v1/appointment", appointmentRoute);
 
 connectDB(DATABASE_URL, DB_NAME);
 
