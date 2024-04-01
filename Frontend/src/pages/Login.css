@@ -1,0 +1,198 @@
+.loginSignup {
+  width: 100%;
+  /* height: 80vh; */
+  background-color: #fce3fe;
+  padding: 6.25rem 0;
+  /* margin-bottom: 5rem; */
+}
+
+.loginSignupContainer {
+  width: 36.25rem;
+  height: 35.5rem;
+  background-color: #fff;
+  margin: auto;
+  padding: 1rem 3rem;
+
+  h1 {
+    margin: 1.25rem 0;
+  }
+  button {
+    width: 30.4rem;
+    height: 2.9rem;
+    color: #fff;
+    background-color: #ff4141;
+    margin-top: 1.875rem;
+    border: none;
+    font-size: 1.4rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+}
+
+.loginSignupFields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8125rem;
+  margin-top: 1.875rem;
+
+  input {
+    height: 2.7rem;
+    width: 100%;
+    padding-left: 1.25rem;
+    border: 1px solid #c9c9c9;
+    outline: none;
+    color: #5c5c5c;
+    font-size: 1.125rem;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+  ::-webkit-datetime-edit {
+    padding: 0.2em;
+  }
+
+  ::-webkit-datetime-edit-fields-wrapper {
+    background: #f0f0f0; /* Light gray background */
+  }
+
+  ::-webkit-datetime-edit-text {
+    color: #333; /* Dark gray text color */
+    padding: 0 0.3em;
+  }
+
+  ::-webkit-datetime-edit-month-field {
+    color: #007bff; /* Blue month */
+  }
+
+  ::-webkit-datetime-edit-day-field {
+    color: #28a745; /* Green day */
+  }
+
+  ::-webkit-datetime-edit-year-field {
+    color: #6f42c1; /* Purple year */
+  }
+
+  ::-webkit-inner-spin-button {
+    display: none;
+  }
+
+  ::-webkit-calendar-picker-indicator {
+    background: #49ff07; /* Orange calendar picker */
+  }
+  input::-webkit-datetime-edit-day-field:focus,
+  input::-webkit-datetime-edit-month-field:focus,
+  input::-webkit-datetime-edit-year-field:focus {
+    background-color: red;
+    color: white;
+    outline: none;
+  }
+
+  select {
+    height: 2.9rem;
+    width: 93%;
+    padding-left: 1.25rem;
+    border: 1px solid #c9c9c9;
+    font-size: 1.125rem;
+  }
+}
+::-moz-selection {
+  /* Code for Firefox */
+  color: red;
+  background: yellow;
+}
+
+::selection {
+  color: red;
+  background: yellow;
+}
+.loginSignupLogin {
+  margin-top: 1.25rem;
+  color: #5c5c5c;
+  font-size: 1.125rem;
+  font-weight: 500;
+  span {
+    color: #ff4141;
+    font-weight: 600;
+    cursor: pointer;
+  }
+}
+
+.loginSignupFields .isVisitedContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  input {
+    height: 1.2rem;
+    width: 1.2rem;
+    accent-color: rgb(75, 190, 13);
+  }
+}
+
+.loginSignupAgree {
+  display: flex;
+  align-items: center;
+  margin-top: 1.5625rem;
+  gap: 1.25rem;
+  color: #5c5c5c;
+  font-size: 1rem;
+  font-weight: 500;
+  input {
+    width: 2rem;
+    height: 2rem;
+    accent-color: rgb(75, 190, 13);
+  }
+}
+
+@media (max-width: 1280px) {
+  .loginSignup {
+    padding-top: 3.125rem;
+  }
+  .loginSignupContainer {
+    width: auto;
+    max-width: 31.25rem;
+    max-height: 31.25rem;
+
+    h1 {
+      margin: 10px 0;
+    }
+    button {
+      width: 100%;
+    }
+  }
+  .loginSignupFields {
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+    input {
+      height: 3.5rem;
+      width: 93%;
+    }
+  }
+  .loginSignupLogin {
+    font-size: 1rem;
+  }
+  .loginSignupAgree {
+    font-size: 12px;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 800px) {
+  .loginSignupContainer {
+    padding: 1.25rem 1.875rem;
+    h1 {
+      font-size: 1.5rem;
+    }
+    button {
+      height: 3.125rem;
+      font-size: 1rem;
+    }
+  }
+  .loginSignupFields {
+    margin-top: 1.25rem;
+    input {
+      height: 50px;
+    }
+  }
+}
