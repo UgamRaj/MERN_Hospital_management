@@ -1,7 +1,72 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import { useHospital } from "../Context/UserProvider";
+import { toast } from "react-toastify";
+import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 const Doctors = () => {
-  return <div>Doctors</div>;
+  const [doctors, setDoctors] = useState([]);
+  const { isAuthenticated } = useHospital();
+
+  useEffect(() => {
+    const fetchDoctors = async () => {
+      try {
+        const { data } = await axios.get(
+          "http://localhost:10000/api/v1/user/doctors",
+          { withCredentials: true }
+        );
+
+        setDoctors(data.doctors);
+      } catch (error) {
+        toast.error(error.response.message);
+      }
+    };
+    fetchDoctors();
+  }, []);
+
+  if (!isAuthenticated) {
+    return <Navigate to={"/login"} />;
+  }
+
+  return (
+    <div className="page doctors">
+      <h1>Doctors</h1>
+      <div className="banner">
+        {doctors && doctors.length > 0 ? (
+          doctors?.map((doctor, i) => {
+            return (
+              <div className="card" key={i}>
+                <img
+                  src={doctor.doctorAvator && doctor.doctorAvator.url}
+                  alt="doctor Avator"
+                />
+                <h4>{`${doctor.firstName} ${doctor.lastName}`}</h4>
+                <div className="details">
+                  <p>
+                    Email : <span>{doctor.email}</span>
+                  </p>
+                  <p>
+                    Phone : <span>{doctor.phone}</span>
+                  </p>
+                  <p>
+                    Age : <span>{doctor.age}</span>
+                  </p>
+                  <p>
+                    Gender : <span>{doctor.gender}</span>
+                  </p>
+                  <p>
+                    Department : <span>{doctor.doctorDepartment}</span>
+                  </p>
+                </div>
+              </div>
+            );
+          })
+        ) : (
+          <h1>No Registered Doctors found</h1>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default Doctors;

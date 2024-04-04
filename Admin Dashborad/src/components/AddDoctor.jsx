@@ -21,6 +21,18 @@ const AddDoctor = () => {
     doctorDepartment: "",
   });
 
+  const departments = [
+    "Pediatrics",
+    "Orthopedics",
+    "Cardiology",
+    "Neurology",
+    "Oncology",
+    "Radiology",
+    "Physical Therapy",
+    "Dermatology",
+    "ENT",
+  ];
+
   const changehandler = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -37,27 +49,27 @@ const AddDoctor = () => {
 
   const doctorHandler = async () => {
     console.log("signup", formData);
-    try {
-      const response = await axios.post(
-        "http://localhost:10000/api/v1/user/doctor/addnew",
-        { ...formData },
-        {
-          withCredentials: true,
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const responseData = response.data;
-      if (responseData.success) {
-        toast.success(responseData.message);
-        // setIsAuthenticated(true);
-        navigate("/");
-      }
-    } catch (error) {
-      toast.error(error.response.data.message);
-      // console.error("Error:", error);
-    }
+    // try {
+    //   const response = await axios.post(
+    //     "http://localhost:10000/api/v1/user/doctor/addnew",
+    //     { ...formData },
+    //     {
+    //       withCredentials: true,
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //     }
+    //   );
+    //   const responseData = response.data;
+    //   if (responseData.success) {
+    //     toast.success(responseData.message);
+    //     // setIsAuthenticated(true);
+    //     navigate("/");
+    //   }
+    // } catch (error) {
+    //   toast.error(error.response.data.message);
+    //   // console.error("Error:", error);
+    // }
   };
 
   if (!isAuthenticated) {
@@ -76,9 +88,9 @@ const AddDoctor = () => {
         </div>
         <div className="loginSignupFields">
           <label htmlFor="file-upload" className="custom-file-upload">
-            Upload image
+            Upload Image
           </label>
-          <input id="file-upload" type="file" />
+          <input id="file-upload" type="file" onChange={avtarFilehandler} />
 
           <input
             type="text"
@@ -94,6 +106,20 @@ const AddDoctor = () => {
             placeholder="Last Name"
             onChange={changehandler}
           />
+          <select
+            name="doctorDepartment"
+            value={formData.doctorDepartment}
+            onChange={changehandler}
+          >
+            <option value="">Select Department</option>
+            {departments.map((department, i) => {
+              return (
+                <option key={i} value={department}>
+                  {department}
+                </option>
+              );
+            })}
+          </select>
           <input
             type="number"
             name="phone"
@@ -101,6 +127,7 @@ const AddDoctor = () => {
             placeholder="Phone Number"
             onChange={changehandler}
           />
+
           <input
             type="number"
             name="age"
