@@ -12,29 +12,24 @@ const appointmentSchema = new mongoose.Schema({
     required: true,
     minLength: [3, "First Name Must Contain At Least 3 Characters."],
   },
-  email: {
-    type: String,
-    required: true,
-    validate: [validator.isEmail, "Please Provide a valid Email"],
-  },
+
   phone: {
     type: String,
     required: true,
     minLength: [10, "Phone Number must contain exact 10 digits"],
     maxLength: [10, "Phone Number must contain exact 10 digits"],
   },
-  aadhar: {
-    type: String,
-    required: true,
-    minLength: [12, "aadhar number must contain exact 12 digits"],
-    maxLength: [12, "aadhar Number must contain exact 12 digits"],
-  },
-  dob: {
-    type: Date,
-    required: [true, "DOB is required"],
+
+  // dob: {
+  //   type: Date,
+  //   required: [true, "DOB is required"],
+  // },
+  age: {
+    type: Number,
+    required: [true, "Age is required"],
   },
   gender: { type: String, required: true, enum: ["Male", "Female", "Other"] },
-  appointment_date: { type: String, required: true },
+  appointment_date: { type: Date, required: true },
   department: { type: String, required: true },
   doctor: {
     firstName: { type: String, required: true },
@@ -43,7 +38,6 @@ const appointmentSchema = new mongoose.Schema({
   isVisited: { type: Boolean, default: false },
   doctorId: { type: mongoose.Schema.ObjectId, required: true },
   patientId: { type: mongoose.Schema.ObjectId, required: true },
-  address: { type: String, required: true },
   status: {
     type: String,
     enum: ["Pending", "Accepted", "Rejected"],

@@ -5,17 +5,8 @@ import { generateToken } from "../utils/jwtToken.js";
 import cloudinary from "cloudinary";
 
 const patientRegister = catchError(async (req, res, next) => {
-  const {
-    firstName,
-    lastName,
-    email,
-    phone,
-    password,
-    gender,
-    dob,
-    aadhar,
-    role,
-  } = req.body;
+  const { firstName, lastName, email, phone, password, gender, age, aadhar } =
+    req.body;
   if (
     !firstName ||
     !lastName ||
@@ -23,17 +14,24 @@ const patientRegister = catchError(async (req, res, next) => {
     !phone ||
     !password ||
     !gender ||
-    !dob ||
-    !aadhar ||
-    !role
+    !age
   ) {
     return next(new ErrorHandler("Please fill full form", 400));
   }
-  let user = await UserModel.findOne({ email });
-  if (user) {
+  const isUserRegistered = await UserModel.findOne({ email });
+  if (isUserRegistered) {
     return next(new ErrorHandler("User Already Registered", 400));
   }
-  user = await UserModel.create(req.body);
+  const user = await UserModel.create({
+    firstName,
+    lastName,
+    email,
+    phone,
+    password,
+    gender,
+    age,
+    role: "Patient",
+  });
   generateToken(user, "User Registered", 200, res);
   //   res.status(200).json({ success: true, message: "User Registered" });
 });
@@ -73,17 +71,7 @@ const userLogin = catchError(async (req, res, next) => {
 
 //! Adding new Admin
 const addNewAdmin = catchError(async (req, res, next) => {
-  const {
-    firstName,
-    lastName,
-    email,
-    phone,
-    password,
-    gender,
-    dob,
-    aadhar,
-    role,
-  } = req.body;
+  const { firstName, lastName, email, phone, password, gender, age } = req.body;
 
   if (
     !firstName ||
@@ -92,8 +80,7 @@ const addNewAdmin = catchError(async (req, res, next) => {
     !phone ||
     !password ||
     !gender ||
-    !dob ||
-    !aadhar
+    !age
   ) {
     return next(new ErrorHandler("Please fill full form", 400));
   }
@@ -112,8 +99,7 @@ const addNewAdmin = catchError(async (req, res, next) => {
     phone,
     password,
     gender,
-    dob,
-    aadhar,
+    age,
     role: "Admin",
   });
   res.status(200).json({ success: true, message: "New Admin Registered" });
@@ -156,14 +142,16 @@ const patientLogout = catchError(async (req, res, next) => {
 //! Add New Doctor
 
 const addDoctor = catchError(async (req, res, next) => {
-  if (!req.files || Object.keys(req.files).length === 0) {
-    return next(new ErrorHandler("Doctor Avator Required", 400));
-  }
-  const { doctorAvator } = req.files;
-  const allowedFormats = ["image/png", "image/jpeg", "image/webp"];
-  if (!allowedFormats.includes(doctorAvator.mimetype)) {
-    return next(new ErrorHandler("File Format Not Supported", 400));
-  }
+  console.log("req.body", req.body);
+
+  // if (!req.files || Object.keys(req.files).length === 0) {
+  //   return next(new ErrorHandler("Doctor Avator Required", 400));
+  // }
+  // const { doctorAvator } = req.files;
+  // const allowedFormats = ["image/png", "image/jpeg", "image/webp"];
+  // if (!allowedFormats.includes(doctorAvator.mimetype)) {
+  //   return next(new ErrorHandler("File Format Not Supported", 400));
+  // }
   const {
     firstName,
     lastName,
@@ -171,9 +159,10 @@ const addDoctor = catchError(async (req, res, next) => {
     phone,
     password,
     gender,
-    dob,
-    aadhar,
+    age,
+    // aadhar,
     doctorDepartment,
+    doctorAvator,
   } = req.body;
   if (
     !firstName ||
@@ -182,8 +171,9 @@ const addDoctor = catchError(async (req, res, next) => {
     !phone ||
     !password ||
     !gender ||
-    !dob ||
-    !aadhar ||
+    !age ||
+    // !aadhar ||
+    !doctorAvator ||
     !doctorDepartment
   ) {
     return next(new ErrorHandler("Please provide full details", 400));
@@ -197,16 +187,16 @@ const addDoctor = catchError(async (req, res, next) => {
       )
     );
   }
-  const cloudinaryRes = await cloudinary.uploader.upload(
-    doctorAvator.tempFilePath
-  );
-  console.log("🚀 ~ addDoctor ~ cloudinaryRes:", cloudinaryRes);
-  if (!cloudinaryRes || cloudinaryRes.error) {
-    console.error(
-      "Cloudinary Error",
-      cloudinaryRes.error || "Unknown Cloudinary Error"
-    );
-  }
+  // const cloudinaryRes = await cloudinary.uploader.upload(
+  //   doctorAvator.tempFilePath
+  // );
+  // console.log("🚀 ~ addDoctor ~ cloudinaryRes:", cloudinaryRes);
+  // if (!cloudinaryRes || cloudinaryRes.error) {
+  //   console.error(
+  //     "Cloudinary Error",
+  //     cloudinaryRes.error || "Unknown Cloudinary Error"
+  //   );
+  // }
   const doctor = await UserModel.create({
     firstName,
     lastName,
@@ -214,13 +204,13 @@ const addDoctor = catchError(async (req, res, next) => {
     phone,
     password,
     gender,
-    dob,
-    aadhar,
+    age,
+    // aadhar,
     doctorDepartment,
     role: "Doctor",
     doctorAvator: {
-      public_id: cloudinaryRes.public_id,
-      url: cloudinaryRes.secure_url,
+      // public_id: cloudinaryRes.public_id,
+      url: doctorAvator,
     },
   });
 

@@ -4,7 +4,9 @@ import ErrorHandler from "../middleware/errorMiddleware.js";
 
 const sendMessage = catchError(async (req, res, next) => {
   const { firstName, lastName, email, phone, message } = req.body;
+  // console.log(req.body);
   if (!firstName || !lastName || !email || !phone || !message) {
+    console.log("not true");
     return next(new ErrorHandler("Please fill full form", 400));
     //  res
     //   .status(400)

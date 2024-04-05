@@ -28,14 +28,13 @@ const userSchema = new mongoose.Schema({
     minLength: [10, "Phone Number must contain exact 10 digits"],
     maxLength: [10, "Phone Number must contain exact 10 digits"],
   },
-  aadhar: {
-    type: String,
-    required: true,
-    minLength: [12, "aadhar number must contain exact 12 digits"],
-    maxLength: [12, "aadhar Number must contain exact 12 digits"],
-  },
-  dob: {
-    type: Date,
+  // aadhar: {
+  //   type: String,
+  //   minLength: [12, "Aadhar Must Contain Only 12 Digits!"],
+  //   maxLength: [12, "Aadhar Must Contain Only 12 Digits!"],
+  // },
+  age: {
+    type: Number,
     required: [true, "DOB is required"],
   },
   gender: { type: String, required: true, enum: ["Male", "Female", "Other"] },
