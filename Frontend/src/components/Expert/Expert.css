@@ -1,0 +1,84 @@
+.expertMain {
+  margin: 0 auto;
+  width: 100%;
+  margin-top: 4rem;
+  .expertMainUpper {
+    width: 60%;
+    text-align: center;
+    margin: 0 auto;
+    h6 {
+      color: #ffffff;
+      font-family: "Poppins", Sans-serif;
+      font-size: 14px;
+      font-weight: normal;
+      letter-spacing: 2px;
+    }
+    h2 {
+      text-align: center;
+      width: 80%;
+      margin: 1rem auto;
+      font-family: "Poppins", Sans-serif;
+      font-size: 45px;
+      font-weight: 700;
+      line-height: 1.2em;
+    }
+    p {
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+}
+
+.expertContainer {
+  width: 90%;
+  margin: 1rem auto;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.expertDoctorMain {
+  margin: 3.7rem 0;
+  cursor: pointer;
+  width: 18%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 4px 9px;
+  background-color: #fff;
+  border-radius: 0 0 1rem 1rem;
+  &:hover {
+    box-shadow: 0 0 50px 15px #48abe0;
+  }
+  .expertCard {
+    width: 16rem;
+    height: 18rem;
+
+    img {
+      height: 100%;
+      width: 100%;
+      transition: all 0.25s ease-in-out;
+      &:hover {
+        scale: 1.05;
+      }
+    }
+  }
+  .expertDctorDetail {
+    text-align: center;
+    line-height: 1.5rem;
+    padding: 1rem 0;
+    /* background-color: #fff; */
+
+    h6 {
+      font-family: "Poppins", Sans-serif;
+      font-size: 1rem;
+      font-weight: normal;
+      color: black;
+    }
+    p {
+      color: #3dd6ba;
+      font-family: "Poppins", Sans-serif;
+      font-size: 14px;
+      font-weight: normal;
+    }
+  }
+}

@@ -5,12 +5,12 @@ import Home from "./pages/Home";
 import Appointment from "./pages/Appointment";
 import AboutUs from "./pages/AboutUs";
 import Login from "./pages/Login";
-import Register from "./pages/Register";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/Navbar";
 import { useEffect } from "react";
 import axios from "axios";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   const { setUser, isAuthenticated, setIsAuthenticated } = useHospital();
@@ -19,7 +19,7 @@ const App = () => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:10000/api/v1/user/patient/me",
+          "http://localhost:10000/api/v1/user/patient",
           { withCredentials: true }
         );
         // console.log("🚀 ~ fetchUser ~ response:", response);
@@ -43,6 +43,7 @@ const App = () => {
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/loginsignup" element={<Login />} />
         </Routes>
+        <Footer />
         <ToastContainer />
       </BrowserRouter>
     </>

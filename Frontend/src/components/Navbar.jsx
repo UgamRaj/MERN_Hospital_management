@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useHospital } from "../Context/UserProvider";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -27,23 +27,35 @@ const Navbar = () => {
     }
   };
   const handleLogin = async () => {
-    navigate("/login");
+    navigate("/loginsignup");
   };
 
   return (
     <div className="container navbar">
-      <div className="logo">SeerviCare</div>
+      <div className="logo">
+        <img src="/logoS.png" alt="" />
+      </div>
       <div className={show ? "navLinks showmenu" : "navLinks"}>
         <div className="links">
-          <Link to={"/"}>Home</Link>
-          <Link to={"/appointment"}>Appoinment</Link>
-          <Link to={"/aboutus"}>About Us</Link>
+          <NavLink to={"/"} activeclassname="active" className="links">
+            Home
+          </NavLink>
+          <NavLink
+            to={"/appointment"}
+            activeclassname="active"
+            className="links"
+          >
+            Appointment
+          </NavLink>
+          <NavLink to={"/aboutus"} activeclassname="active" className="links">
+            About Us
+          </NavLink>
         </div>
       </div>
       <div>
         {isAuthenticated ? (
           <button onClick={handleLogout} className="logoutBtn btn">
-            Logout
+            Log Out
           </button>
         ) : (
           <button onClick={handleLogin} className="logoutBtn btn">

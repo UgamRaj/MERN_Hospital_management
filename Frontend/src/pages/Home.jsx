@@ -1,16 +1,13 @@
 import Hero from "../components/Hero";
-import Biography from "../components/Biography";
+import WhyUs from "../components/WhyUs/WhyUs";
 import Department from "../components/Department";
 import MessageForm from "../components/MessageForm";
 
 const Home = () => {
   return (
     <>
-      <Hero
-        title={"Welcome to Seervi Medical Institute | Your Trusted Healthcare"}
-        imageUrl={"/hero.png"}
-      />
-      <Biography imageUrl={"/about.png"} />
+      <Hero imageUrl={"/mainbanner.png"} />
+      <WhyUs />
       <Department />
       <MessageForm />
     </>

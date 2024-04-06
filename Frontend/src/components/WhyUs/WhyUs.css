@@ -1,0 +1,65 @@
+.WhyUsMain {
+  text-align: center;
+  margin-bottom: 4rem;
+
+  h3 {
+    font-family: "Poppins", Sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.2em;
+    margin-bottom: 2rem;
+  }
+  .whyusTitle {
+    p {
+      color: #3dd6ba;
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+  }
+}
+
+.whyCardMainContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  width: 90%;
+  margin: auto;
+}
+.whyCardMain {
+  display: flex;
+  width: 30%;
+  /* border: 1px solid red; */
+  gap: 1rem;
+  padding: 0.4rem;
+  .imgCard {
+    cursor: pointer;
+    width: 25%;
+    &:hover {
+      animation: pulse 1s linear infinite;
+    }
+  }
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.whyCardMain .textCard {
+  width: fit-content;
+  text-align: left;
+  color: #ffffffd0;
+  h6 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  p {
+    font-size: 12px;
+  }
+}

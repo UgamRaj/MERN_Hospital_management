@@ -15,6 +15,12 @@
 
   h1 {
     margin: 1.25rem 0;
+    background-image: linear-gradient(60deg, #ae67fa, #f49867);
+    background-clip: text;
+    color: transparent;
+    background: -webkit-linear-gradient(60deg, #ae67fa, #f49867);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   button {
     width: 30.4rem;
@@ -127,6 +133,10 @@
     height: 1.2rem;
     width: 1.2rem;
     accent-color: rgb(75, 190, 13);
+  }
+
+  p {
+    color: #000;
   }
 }
 

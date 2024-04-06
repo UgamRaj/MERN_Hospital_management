@@ -1,0 +1,41 @@
+.emergencyContainer {
+  width: 100%;
+  margin: 2rem auto;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.emergencyCard {
+  background-color: #3dd6ba;
+  width: 45%;
+  /* padding: 1rem; */
+  display: flex;
+  height: 13rem;
+  display: flex;
+  align-items: center;
+  border-radius: 0.5rem;
+}
+.emergencyPic {
+  /* background-color: #3dd6ba; */
+  background-image: url("bg-emergency-service.png");
+  background-position: 100%;
+  background-repeat: no-repeat;
+  /* border: 1px solid red; */
+  height: 100%;
+  width: 40%;
+}
+.emergencyDetails {
+  p {
+    font-family: "Poppins", Sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 2px;
+  }
+  h2 {
+    font-size: 2.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.2em;
+  }
+}

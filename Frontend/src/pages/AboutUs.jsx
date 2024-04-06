@@ -1,15 +1,16 @@
-import Biography from "../components/Biography";
-import Hero from "../components/Hero";
+import WhyUs from "../components/WhyUs/WhyUs";
+// import Hero from "../components/Hero";
+import Expert from "../components/Expert/Expert";
+import Emergency from "../components/Emergency/Emergency";
 
 const AboutUs = () => {
   return (
-    <div>
-      <Hero
-        title={"Learn More About us | SeerviCare"}
-        imageUrl={"/about.png"}
-      />
-      <Biography imageUrl={"/whoweare.png"} />
-    </div>
+    <>
+      <Expert />
+
+      <WhyUs />
+      <Emergency />
+    </>
   );
 };
 

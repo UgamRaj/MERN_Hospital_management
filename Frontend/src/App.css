@@ -26,7 +26,9 @@
   background: #555;
 }
 body {
-  background: #e5e5e5;
+  /* background: #e183ba7a; */
+  background: #040c18d2;
+  color: #fff;
 }
 .btn {
   padding: 7px 20px;
@@ -93,19 +95,40 @@ h6 {
   }
 }
 
+.logo {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  img {
+    width: 100%;
+    height: 90%;
+    border-radius: 50%;
+  }
+}
+
 .navbar {
   display: flex;
-  /* background-color: #3422cf68; */
+  /* background-color: #9dd1b8; */
+  background-color: #040c18;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0.5rem;
+  padding: 0.4rem 0.7rem;
+  /* position: fixed;
+  z-index: 5; */
   width: 100%;
   .logo {
     font-size: 2rem;
     font-weight: 700;
     color: #da4071;
-    animation: animate 2s linear infinite;
+    img {
+      -moz-box-shadow: 0 0 5px #fff;
+      -webkit-box-shadow: 0 0 5px #fff;
+      box-shadow: 0px 2px 5px #fff;
+    }
+    /* a
+    nimation: animate 2s linear infinite; */
   }
+
   .links {
     /* width: 70%; */
     /* border: 1px solid red; */
@@ -130,7 +153,7 @@ h6 {
 
 .hero {
   display: flex;
-  gap: 50px;
+  gap: 2rem;
   padding-top: 120px;
   padding-bottom: 120px;
   position: relative;
@@ -138,18 +161,19 @@ h6 {
 .hero .banner {
   flex: 1;
 }
-.hero .banner h1,
+/* .hero .banner h1,
 .hero .banner p {
   max-width: 650px;
-}
+} */
 .hero .banner h1 {
   letter-spacing: 2px;
-  word-spacing: 5px;
+  word-spacing: 4px;
   font-size: 40px;
 }
 .hero .banner p {
   color: #111;
   letter-spacing: 2px;
+  color: #fff;
 }
 .hero .banner span {
   position: absolute;
@@ -161,7 +185,7 @@ h6 {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  gap: 50px;
+  /* gap: 1rem; */
 }
 .hero .banner:last-child {
   display: flex;
@@ -173,6 +197,50 @@ h6 {
   animation: moveUpDown 1s infinite alternate ease-in-out;
 }
 
+.mainImage {
+  width: 40%;
+  /* border: 1px solid red; */
+  img {
+    width: 80%;
+  }
+}
+
+.banner {
+  /* width: 70%; */
+  /* border: 1px solid red; */
+
+  h1 {
+    font-size: 2.5rem;
+    padding-bottom: 15px;
+    margin-bottom: 0px;
+    position: relative;
+    line-height: 2.5rem;
+    background-image: linear-gradient(60deg, #ae67fa, #f49867);
+    background-clip: text;
+    color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+    animation: example 2s linear 0s infinite alternate;
+  }
+  h2 {
+    font-weight: 500;
+    margin-bottom: 2rem;
+  }
+  p {
+    font-size: 1.1rem;
+    color: gray;
+  }
+}
+
+@keyframes example {
+  from {
+    width: 0;
+  }
+  to {
+    width: 160%;
+  }
+}
 @keyframes moveUpDown {
   0% {
     transform: translateY(0);
@@ -252,7 +320,12 @@ h6 {
   font-size: 24px;
   margin-bottom: 30px;
   background: linear-gradient(140deg, #9083d5, #271776ca);
+  transition: all 0.2s ease-in-out;
 }
+.form-component button:hover {
+  background: linear-gradient(140deg, #7262c2, #0d082bca);
+}
+
 .form-component .wrapper {
   display: flex;
   gap: 50px;
@@ -345,6 +418,9 @@ h6 {
 .message-form h2 {
   text-align: center;
   color: #000;
+  background: -webkit-linear-gradient(rgb(188, 12, 241), rgb(216, 54, 54));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   position: relative;
 }
 .message-form img {
@@ -361,6 +437,12 @@ h6 {
     top: 10%;
   }
 }
+
+.submitBtnContainer .SubmitBtn {
+  -webkit-filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.5));
+  cursor: pointer;
+}
+
 footer {
   padding-bottom: 30px !important;
 }
@@ -444,10 +526,11 @@ footer .content div:last-child div svg {
   padding-bottom: 50px;
 }
 .departments h2 {
-  color: gray;
+  color: rgb(32, 197, 218);
   margin-bottom: 30px;
 }
 .card {
+  cursor: pointer;
   position: relative;
   border-radius: 8px;
   flex: 1;
@@ -460,6 +543,7 @@ footer .content div:last-child div svg {
   min-height: 360px;
   margin: 0 10px;
   text-decoration: none;
+  overflow: hidden;
 }
 .card img {
   position: absolute;
@@ -468,10 +552,17 @@ footer .content div:last-child div svg {
   z-index: -1;
   top: 0;
   left: 0;
+  &:hover {
+    scale: 1.05;
+  }
 }
+.card :hover {
+  box-shadow: 0 0 50px 15px #48abe0;
+}
+
 .card .depart-name {
   margin-bottom: 30px;
-  background: #e5e5e5;
+  background: #324e58;
   width: 320px;
   font-size: 24px;
   text-transform: uppercase;
@@ -518,28 +609,65 @@ nav .navLinks .links {
 }
 nav .navLinks .links a {
   text-decoration: none;
-  color: #222;
+  color: #cac4cd;
   font-size: 20px;
   font-weight: 600;
   letter-spacing: 1.4px;
 }
+
+.links a {
+  /* color: #bab1b1; */
+  transition: all 0.2s ease-in-out;
+  font-family: "Poppins", Sans-serif;
+  font-size: 1.2rem;
+  padding: 0.4rem 0.7rem;
+  color: #ffffff8d;
+  /* background-color: #f8cf66db; */
+}
+
+.links a:active,
+.links a.active {
+  border-bottom: 2px solid yellow;
+  border-radius: 0 0 0.5rem 0.5rem;
+  color: #fff;
+}
+
+.links a:hover {
+  color: #fff;
+}
 nav .navLinks .links a:hover {
-  color: #000;
+  color: #bab1b1;
   transition: 0.3s;
   cursor: pointer;
 }
-nav .btn {
+
+.btn {
   padding: 8px 20px;
   color: #e5e5e5;
   background: transparent;
   border: none;
   border-radius: 20px;
-  font-size: 20px;
+  font-size: 1rem;
   font-weight: 600;
   z-index: 2;
 }
-nav .logoutBtn {
-  background: linear-gradient(135deg, black, rgb(49, 49, 49));
+
+.btn:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(191, 162, 188, 0.73),
+    rgb(172, 48, 143)
+  );
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.logoutBtn {
+  background: linear-gradient(
+    135deg,
+    rgba(130, 109, 109, 0.73),
+    rgb(168, 211, 208)
+  );
 }
 nav .loginBtn {
   background: linear-gradient(135deg, black, rgb(49, 49, 49));

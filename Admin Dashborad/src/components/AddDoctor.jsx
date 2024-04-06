@@ -8,6 +8,7 @@ const AddDoctor = () => {
   const navigate = useNavigate();
   const { isAuthenticated } = useHospital();
   const [docPreview, setDocPreview] = useState("");
+  const [docAvator, setDocAvator] = useState("");
   const [formData, setFormData] = useState({
     password: "",
     email: "",
@@ -40,36 +41,43 @@ const AddDoctor = () => {
   //! Handling files of images
   const avtarFilehandler = (e) => {
     const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      setDocPreview(reader.result);
-    };
+    const res = URL.createObjectURL(file);
+    // console.log("🚀 ~ avtarFilehandler ~ res:", res);
+    // const reader = new FileReader();
+    // reader.readAsDataURL(file);
+    // reader.onload = () => {
+    // setDocPreview(reader.result);
+    setDocPreview(res);
+    setDocAvator(res);
+    // console.log("🚀 ~ avtarFilehandler ~ file:", reader.result);
+    // };
   };
 
   const doctorHandler = async () => {
+    formData.doctorAvator = docAvator;
     console.log("signup", formData);
-    // try {
-    //   const response = await axios.post(
-    //     "http://localhost:10000/api/v1/user/doctor/addnew",
-    //     { ...formData },
-    //     {
-    //       withCredentials: true,
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //     }
-    //   );
-    //   const responseData = response.data;
-    //   if (responseData.success) {
-    //     toast.success(responseData.message);
-    //     // setIsAuthenticated(true);
-    //     navigate("/");
-    //   }
-    // } catch (error) {
-    //   toast.error(error.response.data.message);
-    //   // console.error("Error:", error);
-    // }
+
+    try {
+      const response = await axios.post(
+        "http://localhost:10000/api/v1/user/doctor/addnew",
+        { ...formData },
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const responseData = response.data;
+      if (responseData.success) {
+        toast.success(responseData.message);
+        // setIsAuthenticated(true);
+        // navigate("/");
+      }
+    } catch (error) {
+      toast.error(error.response.data.message);
+      // console.error("Error:", error);
+    }
   };
 
   if (!isAuthenticated) {

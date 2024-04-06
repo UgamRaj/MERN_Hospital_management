@@ -1,20 +1,20 @@
-const Hero = ({ title, imageUrl }) => {
+const Hero = ({ imageUrl }) => {
   return (
     <div className="hero container">
-      <div className="banner">
-        <h1>{title}</h1>
+      <div className="banner ">
+        <h1>Welcome to </h1>
+        <h1>Seervi Medical Institute</h1>
+        <h2>|Inspiring Better Health Care For Everyone</h2>
         <p>
-          We assess your health using various health signals and combine them to
-          create a comprehensive health profile for you. Based on this profile,
-          our team of experts provides personalized recommendations and
-          collaborates with you to achieve your optimum holistic well-being.
+          Health always begins with a healthy life style. Being healthy will
+          makes you happier.
         </p>
       </div>
-      <div className="banner">
+      <div className="banner mainImage">
         <img src={imageUrl} alt="hero" className="animated-image" />
-        <span>
+        {/* <span>
           <img src="/Vector.png" alt="vector" />
-        </span>
+        </span> */}
       </div>
     </div>
   );

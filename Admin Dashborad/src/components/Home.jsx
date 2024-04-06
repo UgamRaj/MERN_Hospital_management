@@ -135,7 +135,7 @@ const Home = () => {
                 );
               })
             ) : (
-              <h1>No Appointments</h1>
+              <p>No Appointments</p>
             )}
           </tbody>
         </table>

@@ -1,8 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const AppointmentForm = () => {
+  const navigate = useNavigate();
   const [doctors, setDoctors] = useState([]);
+  const [isVisited, setIsVisited] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -11,9 +15,9 @@ const AppointmentForm = () => {
     age: "",
     appointment_date: "",
     department: "",
-    doctor_firstName: "",
-    doctor_lastName: "",
-    isVisited: "",
+    // doctor_firstName: "",
+    // doctor_lastName: "",
+    // isVisited: false,
     doctorName: "",
   });
 
@@ -46,20 +50,37 @@ const AppointmentForm = () => {
   const changehandler = (e) => {
     const { name, value } = e.target;
 
-    if (name === "doctorName") {
-      const fullName = value.split(" ");
-      setFormData({
-        ...formData,
-        doctor_firstName: fullName[0],
-        doctor_lastName: fullName[1],
-      });
-    }
+    // if (name === "doctorName") {
+    //   const fullName = value.split(" ");
+    //   console.log("🚀 ~ changehandler ~ fullName:", fullName[0]);
+    //   setFormData({
+    //     ...formData,
+    //     // doctor_firstName: fullName[0] || "",
+    //     // doctor_lastName: fullName[1] || "",
+    //   });
+    // }
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleAppointment = (e) => {
+  const handleAppointment = async (e) => {
     e.preventDefault();
     console.log("form", formData);
+    try {
+      const { data } = await axios.post(
+        `http://localhost:10000/api/v1/appointment/book`,
+        { ...formData, isVisited },
+        {
+          withCredentials: true,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      console.log("🚀 ~ handleAppointment ~ data:", data);
+      toast.success(data.message);
+      navigate("/");
+    } catch (error) {
+      console.log("🚀 ~ handleAppointment ~ error:", error);
+      toast.error(error.response.data.message);
+    }
   };
 
   return (
@@ -149,7 +170,13 @@ const AppointmentForm = () => {
                 ))}
             </select>
             <div className="isVisitedContainer">
-              <input className="isVisited" type="checkbox" name="isVisited" />
+              <input
+                className="isVisited"
+                type="checkbox"
+                name="isVisited"
+                onChange={(e) => setIsVisited(e.target.checked)}
+                checked={isVisited}
+              />
               <p>Is Visited</p>
             </div>
           </>

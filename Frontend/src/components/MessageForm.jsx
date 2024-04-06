@@ -93,8 +93,13 @@ const MessageForm = () => {
           value={formData.message}
           onChange={handleChange}
         />
-        <div style={{ justifyContent: "center", alignItems: "center" }}>
-          <button type="submit">Send</button>
+        <div
+          className="submitBtnContainer"
+          style={{ justifyContent: "center", alignItems: "center" }}
+        >
+          <button className="SubmitBtn" type="submit">
+            Send
+          </button>
         </div>
       </form>
     </div>

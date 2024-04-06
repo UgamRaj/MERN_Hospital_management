@@ -2,6 +2,7 @@ import { catchError } from "../middleware/catchErrors.js";
 import ErrorHandler from "../middleware/errorMiddleware.js";
 import UserModel from "../models/userModel.js";
 import { generateToken } from "../utils/jwtToken.js";
+import multer from "multer";
 import cloudinary from "cloudinary";
 
 const patientRegister = catchError(async (req, res, next) => {
@@ -143,6 +144,26 @@ const patientLogout = catchError(async (req, res, next) => {
 
 const addDoctor = catchError(async (req, res, next) => {
   console.log("req.body", req.body);
+
+  //   const storage = multer.diskStorage({
+  //     destination: "./upload/images",
+  //     filename: (req, file, cb) => {
+  //       return cb(
+  //         null,
+  //         `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`
+  //       );
+  //     },
+  //   });
+
+  //   const upload = multer({ storage: storage });
+
+  // app.post("/upload", upload.single("product"), (req, res) => {
+
+  //   res.json({
+  //     success: true,
+  //     imageUrl: `http://localhost:${process.env.PORT}/images/${req.file.filename}`,
+  //   });
+  // });
 
   // if (!req.files || Object.keys(req.files).length === 0) {
   //   return next(new ErrorHandler("Doctor Avator Required", 400));
