@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import validator from "validator";
+// import validator from "validator";
 
 const appointmentSchema = new mongoose.Schema({
   firstName: {
@@ -10,7 +10,7 @@ const appointmentSchema = new mongoose.Schema({
   lastName: {
     type: String,
     required: true,
-    minLength: [3, "First Name Must Contain At Least 3 Characters."],
+    minLength: [1, "Last Name Must Contain At Least 1 Characters."],
   },
 
   phone: {

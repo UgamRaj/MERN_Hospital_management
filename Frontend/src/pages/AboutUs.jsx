@@ -6,9 +6,8 @@ import Emergency from "../components/Emergency/Emergency";
 const AboutUs = () => {
   return (
     <>
-      <Expert />
-
       <WhyUs />
+      <Expert />
       <Emergency />
     </>
   );

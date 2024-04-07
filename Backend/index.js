@@ -25,14 +25,23 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload({ useTempFiles: true, tempFileDir: "/tmp/" }));
 
-// app.use(cors());// for all url applicable
-app.use(
-  cors({
-    origin: [process.env.FRONTED_URL, process.env.DASHBORAD_URL],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
+// app.use(cors()); // for all url applicable
+const corsOptions = {
+  origin: [process.env.FRONTED_URL, process.env.DASHBORAD_URL],
+  methods: "GET,PUT,PATCH,POST,DELETE",
+  credentials: true,
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
+// app.use(
+//   cors({
+//     origin: [process.env.FRONTED_URL, process.env.DASHBORAD_URL],
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     credentials: true,
+//     optionsSuccessStatus: 200,
+//   })
+// );
 
 app.use("/api/v1/message", messageRoute);
 app.use("/api/v1/user", userRoute);

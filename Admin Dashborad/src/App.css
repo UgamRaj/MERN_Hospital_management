@@ -417,6 +417,7 @@ body {
 
 .doctors h1 {
   color: #3939d9f2;
+
   margin-bottom: 30px;
   font-size: 2.3rem;
 }
@@ -573,4 +574,8 @@ input[type="time"]:before {
   content: attr(placeholder);
   color: #444;
   margin-right: 0.5em;
+}
+
+.noDoctor {
+  color: red;
 }

@@ -7,7 +7,6 @@ const bookAppointment = catchError(async (req, res, next) => {
   const {
     firstName,
     lastName,
-    email,
     phone,
     age,
     gender,
@@ -48,7 +47,7 @@ const bookAppointment = catchError(async (req, res, next) => {
   if (isConflict.length > 1) {
     return next(
       new ErrorHandler(
-        "Doctor conflict! Please contect through email or phone",
+        "Doctor conflict! Please contact through email or phone",
         400
       )
     );
@@ -59,7 +58,6 @@ const bookAppointment = catchError(async (req, res, next) => {
   const appointment = await AppointmentModel.create({
     firstName,
     lastName,
-    email,
     phone,
     age,
     gender,

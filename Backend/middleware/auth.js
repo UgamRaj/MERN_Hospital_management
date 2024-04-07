@@ -35,14 +35,15 @@ const isAdminAuthenticated = catchError(async (req, res, next) => {
 //Todo-->For patient
 const isPatientAuthenticated = catchError(async (req, res, next) => {
   const token = req.cookies.patientToken;
-  // console.log("🚀 ~ isPatientAuthenticated ~ token:", token);
+  console.log("🚀 ~ isPatientAuthenticated ~ token:", token);
   if (!token) {
     return next(new ErrorHandler("Patient not authenticated", 400));
   }
   //! Authentication
   const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
-  // console.log("🚀 ~ isPatientAuthenticated ~ decoded:", decoded);
+  console.log("🚀 ~ isPatientAuthenticated ~ decoded:", decoded);
   const user = await UserModel.findById(decoded.id);
+  console.log("🚀 ~ isPatientAuthenticated ~ user:", user);
 
   req.user = user;
 

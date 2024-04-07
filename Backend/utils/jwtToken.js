@@ -1,10 +1,13 @@
 import dotenv from "dotenv";
 
 dotenv.config();
-
+console.log(process.env.COOKIE_EXPIRE);
 export const generateToken = (user, message, statusCode, res) => {
   const token = user.generateJsonWebToken();
+
   const cookieName = user.role === "Admin" ? "adminToken" : "patientToken";
+  console.log("🚀 ~ generateToken ~ cookieName:", cookieName);
+
   res
     .status(statusCode)
     .cookie(cookieName, token, {

@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
   lastName: {
     type: String,
     required: true,
-    minLength: [3, "First Name Must Contain At Least 3 Characters."],
+    minLength: [1, "First Name Must Contain At Least 1 Characters."],
   },
   email: {
     type: String,
@@ -35,7 +35,7 @@ const userSchema = new mongoose.Schema({
   // },
   age: {
     type: Number,
-    required: [true, "DOB is required"],
+    required: [true, "age is required"],
   },
   gender: { type: String, required: true, enum: ["Male", "Female", "Other"] },
   password: {

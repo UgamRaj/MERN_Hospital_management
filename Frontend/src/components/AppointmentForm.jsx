@@ -36,15 +36,19 @@ const AppointmentForm = () => {
   }, []);
 
   const departments = [
+    "Gyneocology",
     "Orthopedics",
     "Pediatrics",
     "Cardiology",
     "Oncology",
+    "Orthopedics",
+    "Urology",
     "ENT",
     "Physical Therapy",
     "Dermatology",
     "Neurology",
     "Radiology",
+    "Gastroenterology",
   ];
 
   const changehandler = (e) => {

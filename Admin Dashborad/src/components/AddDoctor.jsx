@@ -55,7 +55,7 @@ const AddDoctor = () => {
 
   const doctorHandler = async () => {
     formData.doctorAvator = docAvator;
-    console.log("signup", formData);
+    console.log("Doctor", formData);
 
     try {
       const response = await axios.post(
@@ -72,7 +72,7 @@ const AddDoctor = () => {
       if (responseData.success) {
         toast.success(responseData.message);
         // setIsAuthenticated(true);
-        // navigate("/");
+        navigate("/doctors");
       }
     } catch (error) {
       toast.error(error.response.data.message);

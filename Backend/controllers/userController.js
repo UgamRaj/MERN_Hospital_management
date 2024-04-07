@@ -6,8 +6,7 @@ import multer from "multer";
 import cloudinary from "cloudinary";
 
 const patientRegister = catchError(async (req, res, next) => {
-  const { firstName, lastName, email, phone, password, gender, age, aadhar } =
-    req.body;
+  const { firstName, lastName, email, phone, password, gender, age } = req.body;
   if (
     !firstName ||
     !lastName ||
@@ -115,6 +114,7 @@ const getAllDoctors = catchError(async (req, res, next) => {
 //! Get User Details
 const getUserDetails = catchError(async (req, res, next) => {
   const user = req.user;
+  console.log("🚀 ~ getUserDetails ~ user:", user);
   res.status(200).json({ success: true, user });
 });
 
@@ -143,7 +143,7 @@ const patientLogout = catchError(async (req, res, next) => {
 //! Add New Doctor
 
 const addDoctor = catchError(async (req, res, next) => {
-  // console.log("req.body", req.body);
+  console.log("req.body", req.body);
 
   //   const storage = multer.diskStorage({
   //     destination: "./upload/images",
@@ -181,7 +181,6 @@ const addDoctor = catchError(async (req, res, next) => {
     password,
     gender,
     age,
-    // aadhar,
     doctorDepartment,
     // doctorAvator,
   } = req.body;
@@ -193,7 +192,6 @@ const addDoctor = catchError(async (req, res, next) => {
     !password ||
     !gender ||
     !age ||
-    // !aadhar ||
     !doctorAvator ||
     !doctorDepartment
   ) {
@@ -211,7 +209,7 @@ const addDoctor = catchError(async (req, res, next) => {
   const cloudinaryRes = await cloudinary.uploader.upload(
     doctorAvator.tempFilePath
   );
-  // console.log("🚀 ~ addDoctor ~ cloudinaryRes:", cloudinaryRes);
+  console.log("🚀 ~ addDoctor ~ cloudinaryRes:", cloudinaryRes);
   if (!cloudinaryRes || cloudinaryRes.error) {
     console.error(
       "Cloudinary Error",
@@ -237,6 +235,7 @@ const addDoctor = catchError(async (req, res, next) => {
       url: cloudinaryRes.secure_url,
     },
   });
+  console.log("🚀 ~ addDoctor ~ doctor:", doctor);
 
   res
     .status(200)

@@ -62,7 +62,7 @@ const Doctors = () => {
             );
           })
         ) : (
-          <h1>No Registered Doctors found</h1>
+          <h2 className="noDoctor">No Registered Doctors found</h2>
         )}
       </div>
     </div>
