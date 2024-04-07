@@ -9,12 +9,15 @@ export const useHospital = () => {
 const UserProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState({});
+  const [noOfDoctor, setNoOfDoctor] = useState(0);
 
   const contextValue = {
     user,
     setUser,
     isAuthenticated,
     setIsAuthenticated,
+    noOfDoctor,
+    setNoOfDoctor,
   };
 
   return (

@@ -7,7 +7,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { toast } from "react-toastify";
 
 const Home = () => {
-  const { isAuthenticated, user } = useHospital();
+  const { isAuthenticated, user, noOfDoctor } = useHospital();
   const [availableAppointment, setavailableAppointment] = useState([]);
 
   useEffect(() => {
@@ -73,7 +73,7 @@ const Home = () => {
         </div>
         <div className="thirdBox">
           <p>Registered Doctors</p>
-          <p>{2}</p>
+          <p>{noOfDoctor}</p>
         </div>
       </div>
       <div className="banner">

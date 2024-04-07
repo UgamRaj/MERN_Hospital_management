@@ -6,7 +6,7 @@ import { Navigate } from "react-router-dom";
 
 const Doctors = () => {
   const [doctors, setDoctors] = useState([]);
-  const { isAuthenticated } = useHospital();
+  const { isAuthenticated, setNoOfDoctor } = useHospital();
 
   useEffect(() => {
     const fetchDoctors = async () => {
@@ -17,6 +17,7 @@ const Doctors = () => {
         );
 
         setDoctors(data.doctors);
+        setNoOfDoctor(data.doctors.length);
       } catch (error) {
         toast.error(error.response.message);
       }
