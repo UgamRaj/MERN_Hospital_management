@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 
 dotenv.config();
-console.log(process.env.COOKIE_EXPIRE);
+// console.log(process.env.COOKIE_EXPIRE);
 export const generateToken = (user, message, statusCode, res) => {
   const token = user.generateJsonWebToken();
 
@@ -15,6 +15,8 @@ export const generateToken = (user, message, statusCode, res) => {
       expires: new Date(
         Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
       ),
+      sameSite: "None",
+      secure: true,
     })
     .json({ success: true, message, user, token });
 };
