@@ -33,7 +33,7 @@ const Home = () => {
   const statusHandler = async (id, status) => {
     try {
       const { data } = await axios.put(
-        `http://localhost:10000/api/v1/appointment/update/${id}`,
+        `https://mern-hospital-management.onrender.com/api/v1/appointment/update/${id}`,
         { status },
         { withCredentials: true }
       );
