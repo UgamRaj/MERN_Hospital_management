@@ -71,7 +71,7 @@ const AppointmentForm = () => {
     console.log("form", formData);
     try {
       const { data } = await axios.post(
-        `http://localhost:10000/api/v1/appointment/book`,
+        `https://mern-hospital-management.onrender.com/api/v1/appointment/book`,
         { ...formData, isVisited },
         {
           withCredentials: true,
