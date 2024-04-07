@@ -24,7 +24,7 @@ const AppointmentForm = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       const { data } = await axios.get(
-        "http://localhost:10000/api/v1/user/doctors",
+        "https://mern-hospital-management.onrender.com/api/v1/user/doctors",
         {
           withCredentials: true,
         }

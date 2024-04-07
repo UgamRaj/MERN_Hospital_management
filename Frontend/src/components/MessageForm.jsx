@@ -25,7 +25,7 @@ const MessageForm = () => {
     // console.log(formData);
     try {
       const res = await axios.post(
-        "http://localhost:10000/api/v1/message/send",
+        "https://mern-hospital-management.onrender.com/api/v1/message/send",
         { ...formData },
         {
           withCredentials: true,

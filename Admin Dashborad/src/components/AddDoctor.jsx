@@ -59,7 +59,7 @@ const AddDoctor = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:10000/api/v1/user/doctor/addnew",
+        "https://mern-hospital-management.onrender.com/api/v1/user/doctor/addnew",
         { ...formData },
         {
           withCredentials: true,

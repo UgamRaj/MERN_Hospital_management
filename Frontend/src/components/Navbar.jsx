@@ -12,7 +12,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:10000/api/v1/user/patient/logout",
+        "https://mern-hospital-management.onrender.com/api/v1/user/patient/logout",
         {
           withCredentials: true,
         }

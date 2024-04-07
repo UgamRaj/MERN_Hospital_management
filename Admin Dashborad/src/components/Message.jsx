@@ -5,13 +5,13 @@ import { Navigate } from "react-router-dom";
 
 const Message = () => {
   const [messages, setMessages] = useState([]);
-  const { isAuthenticated, setIsAuthenticated } = useHospital();
+  const { isAuthenticated } = useHospital();
 
   useEffect(() => {
     const fetchMessages = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:10000/api/v1/message/getall",
+          "https://mern-hospital-management.onrender.com/api/v1/message/getall",
           { withCredentials: true }
         );
         setMessages(data.messages);

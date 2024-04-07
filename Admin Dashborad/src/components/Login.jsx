@@ -25,7 +25,7 @@ const Login = () => {
     console.log("login", formData);
     try {
       const response = await axios.post(
-        "http://localhost:10000/api/v1/user/login",
+        "https://mern-hospital-management.onrender.com/api/v1/user/login",
         { ...formData, role: "Admin" },
         {
           withCredentials: true,
