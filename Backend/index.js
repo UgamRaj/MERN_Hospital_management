@@ -23,7 +23,7 @@ const DB_NAME = process.env.DB_NAME;
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use(fileUpload({ useTempFiles: true, tempFileDir: "/tmp/" }));
+app.use(fileUpload({ useTempFiles: true, tempFileDir: "/tmp/" }));
 
 // app.use(cors());// for all url applicable
 app.use(
@@ -42,36 +42,36 @@ connectDB(DATABASE_URL, DB_NAME);
 
 //! Image Storage Engine
 //! multer-----------
-const storage = multer.diskStorage({
-  destination: "./upload/images",
-  filename: (req, file, cb) => {
-    return cb(
-      null,
-      `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`
-    );
-  },
-});
+// const storage = multer.diskStorage({
+//   destination: "./upload/images",
+//   filename: (req, file, cb) => {
+//     return cb(
+//       null,
+//       `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`
+//     );
+//   },
+// });
 
-const upload = multer({ storage: storage });
+// const upload = multer({ storage: storage });
 
-app.use("/images", express.static("upload/images"));
-app.post("/upload", upload.single("product"), (req, res) => {
-  console.log(
-    `http://localhost:${process.env.PORT}/images/${req.file.filename}`
-  );
-  res.json({
-    success: true,
-    imageUrl: `http://localhost:${process.env.PORT}/images/${req.file.filename}`,
-  });
-});
+// app.use("/images", express.static("upload/images"));
+// app.post("/upload", upload.single("product"), (req, res) => {
+//   console.log(
+//     `http://localhost:${process.env.PORT}/images/${req.file.filename}`
+//   );
+//   res.json({
+//     success: true,
+//     imageUrl: `http://localhost:${process.env.PORT}/images/${req.file.filename}`,
+//   });
+// });
 
 //! multer-----------
 
-// cloudinary.v2.config({
-//   cloud_name: process.env.CLOUDINARY_NAME,
-//   api_key: process.env.CLOUDINARY_API_KEY,
-//   api_secret: process.env.CLOUDINARY_API_SECRET,
-// });
+cloudinary.v2.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 app.use(errorMiddleware);
 

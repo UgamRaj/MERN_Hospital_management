@@ -18,7 +18,7 @@ const Expert = () => {
         );
 
         setDoctors(data.doctors);
-        console.log(data.doctors);
+        // console.log(data.doctors);
       } catch (error) {
         toast.error(error.response.message);
       }
@@ -43,27 +43,29 @@ const Expert = () => {
 
       <div className="expertContainer">
         {doctors && doctors.length > 0 ? (
-          doctors.map((doctor) => {
-            return (
-              <div className="expertDoctorMain" key={doctor._id}>
-                <div className="expertCard">
-                  <img src={doctor.doctorAvator.url} alt="doctor" />
-                </div>
+          doctors.map(
+            ({ _id, firstName, lastName, doctorAvator, doctorDepartment }) => {
+              return (
+                <div className="expertDoctorMain" key={_id}>
+                  <div className="expertCard">
+                    <img src={doctorAvator.url} alt="doctor" />
+                  </div>
 
-                <div className="expertDctorDetail">
-                  <h6>
-                    {doctor.firstName} {doctor.lastName}
-                  </h6>
-                  <p>Doctor</p>
+                  <div className="expertDctorDetail">
+                    <h6>
+                      {firstName} {lastName}
+                    </h6>
+                    <p>{doctorDepartment}</p>
+                  </div>
                 </div>
-              </div>
-            );
-          })
+              );
+            }
+          )
         ) : (
           <>
             <div className="expertDoctorMain">
               <div className="expertCard">
-                <img src="/Doctor-1.jpg" alt="doctor" />
+                <img src="/Doctor-8.jpg" alt="doctor" />
               </div>
               <div className="expertDctorDetail">
                 <h6>Cameron Williamson</h6>
@@ -72,7 +74,7 @@ const Expert = () => {
             </div>
             <div className="expertDoctorMain">
               <div className="expertCard">
-                <img src="/Doctor-1.jpg" alt="doctor" />
+                <img src="/Doctor-4.jpg" alt="doctor" />
               </div>
               <div className="expertDctorDetail">
                 <h6>Cameron Williamson</h6>
@@ -81,7 +83,7 @@ const Expert = () => {
             </div>
             <div className="expertDoctorMain">
               <div className="expertCard">
-                <img src="/Doctor-1.jpg" alt="doctor" />
+                <img src="/Doctor-2.jpg" alt="doctor" />
               </div>
               <div className="expertDctorDetail">
                 <h6>Cameron Williamson</h6>

@@ -17,7 +17,7 @@ const AddDoctor = () => {
     phone: "",
     gender: "",
     age: "",
-    aadhar: "",
+    // aadhar: "",
     doctorAvator: "",
     doctorDepartment: "",
   });
@@ -41,16 +41,16 @@ const AddDoctor = () => {
   //! Handling files of images
   const avtarFilehandler = (e) => {
     const file = e.target.files[0];
-    const res = URL.createObjectURL(file);
+    // const res = URL.createObjectURL(file);
     // console.log("🚀 ~ avtarFilehandler ~ res:", res);
-    // const reader = new FileReader();
-    // reader.readAsDataURL(file);
-    // reader.onload = () => {
-    // setDocPreview(reader.result);
-    setDocPreview(res);
-    setDocAvator(res);
-    // console.log("🚀 ~ avtarFilehandler ~ file:", reader.result);
-    // };
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      setDocPreview(reader.result);
+      // setDocPreview(res);
+      setDocAvator(file);
+      // console.log("🚀 ~ avtarFilehandler ~ file:", reader.result);
+    };
   };
 
   const doctorHandler = async () => {
@@ -64,7 +64,7 @@ const AddDoctor = () => {
         {
           withCredentials: true,
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
           },
         }
       );
