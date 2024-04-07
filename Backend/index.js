@@ -10,11 +10,12 @@ import userRoute from "./routes/userRoute.js";
 import appointmentRoute from "./routes/appointmentRoute.js";
 
 import { errorMiddleware } from "./middleware/errorMiddleware.js";
-import multer from "multer";
+// import multer from "multer";
 
 const app = express();
 dotenv.config();
-// dotenv.config({path:"./config/config.env"});this is used when .env file name is config.env in config folder
+// dotenv.config({path:"./config/config.env"});
+//this is used when .env file name is config.env in config folder
 
 const PORT = process.env.PORT || 10000;
 const DATABASE_URL = process.env.DATABASE_URL;
