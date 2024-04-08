@@ -22,7 +22,7 @@ const App = () => {
           "https://mern-hospital-management.onrender.com/api/v1/user/patient",
           { withCredentials: true }
         );
-        // console.log("🚀 ~ fetchUser ~ response:", response);
+
         setIsAuthenticated(true);
         setUser(response.data.user);
       } catch (error) {
