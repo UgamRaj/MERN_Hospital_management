@@ -39,3 +39,65 @@
     line-height: 1.2em;
   }
 }
+
+@media screen and (max-width: 1070px) {
+  .emergencyCard {
+    width: 50%;
+    height: 12rem;
+  }
+}
+@media screen and (max-width: 956px) {
+  .emergencyCard {
+    width: 50%;
+    height: 10.5rem;
+  }
+  .emergencyDetails {
+    p {
+      font-weight: normal;
+      letter-spacing: 1.2px;
+    }
+    h2 {
+      font-size: 2.4rem;
+      line-height: 1.2em;
+    }
+  }
+}
+@media screen and (max-width: 850px) {
+  .emergencyContainer {
+    margin: 1.5rem auto;
+  }
+  .emergencyCard {
+    height: 9rem;
+  }
+
+  .emergencyDetails {
+    p {
+      font-size: 10px;
+    }
+    h2 {
+      font-size: 2rem;
+    }
+  }
+}
+
+@media screen and (max-width: 712px) {
+  .emergencyContainer {
+    margin: 1.5rem auto;
+  }
+  .emergencyCard {
+    height: 7rem;
+  }
+
+  .emergencyDetails {
+    p {
+      font-size: 9px;
+    }
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+  .emergencyPic {
+    height: 100%;
+    width: 35%;
+  }
+}
