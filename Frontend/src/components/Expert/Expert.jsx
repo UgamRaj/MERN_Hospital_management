@@ -65,7 +65,7 @@ const Expert = () => {
           <>
             <div className="expertDoctorMain">
               <div className="expertCard">
-                <img src="/Doctor-8.jpg" alt="doctor" />
+                <img src="/doctor-8.jpg" alt="doctor" />
               </div>
               <div className="expertDctorDetail">
                 <h6>Cameron Williamson</h6>

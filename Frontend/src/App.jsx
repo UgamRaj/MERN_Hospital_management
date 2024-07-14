@@ -7,7 +7,7 @@ import AboutUs from "./pages/AboutUs";
 import Login from "./pages/Login";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import { useEffect } from "react";
 import axios from "axios";
 import Footer from "./components/Footer/Footer";

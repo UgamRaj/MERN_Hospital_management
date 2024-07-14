@@ -7,6 +7,7 @@
 .footerContent {
   display: flex;
   justify-content: space-around;
+  color: black;
 }
 
 .footerlogo {
@@ -23,21 +24,6 @@
 .footerQuickLink h4 {
   color: #3dd6ba;
   margin-bottom: 1rem;
-}
-
-.footerSchedule {
-  width: 34%;
-  padding: 0 1rem;
-  li {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.316);
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-  p {
-    font-size: 1rem;
-  }
 }
 
 .footerQuickLink {
@@ -72,6 +58,24 @@
     }
   }
 }
+.footerSchedule {
+  /* border: 1px solid red; */
+  width: 34%;
+  padding: 0 1rem;
+  ul {
+    width: 100%;
+  }
+  li {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.316);
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+}
 
 @media (max-width: 768px) {
   .footerContent {
@@ -93,20 +97,5 @@
     p {
       font-size: 1rem;
     }
-  }
-}
-
-.footerSchedule {
-  width: 80%;
-  padding: 0 1rem;
-  li {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.316);
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-  p {
-    font-size: 1rem;
   }
 }

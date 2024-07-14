@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useHospital } from "../Context/UserProvider";
+import { useHospital } from "../../Context/UserProvider";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { RxHamburgerMenu } from "react-icons/rx";
+import "./Navbar.css";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
   const { isAuthenticated, setIsAuthenticated } = useHospital();
   const navigate = useNavigate();
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   const handleLogout = async () => {
     try {
@@ -27,6 +29,7 @@ const Navbar = () => {
       toast.error(error.response.data.message);
     }
   };
+
   const handleLogin = async () => {
     navigate("/loginsignup");
   };
@@ -34,17 +37,40 @@ const Navbar = () => {
     setShow(!show);
   };
 
+  const handleScroll = () => {
+    setScrollPosition(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="container navbar">
+    <div
+      className={`navbar ${
+        scrollPosition > 950
+          ? "hide-navbar"
+          : scrollPosition > 200
+          ? "blur-navbar"
+          : ""
+      }`}
+    >
       <div className="navbarMain">
         <div className="logo">
           <NavLink to={"/"}>
-            <img src="/logoS.png" alt="logo" />
+            <img src="/smlogo1.png" alt="logo" />
           </NavLink>
         </div>
-        {/* <div className={show ? "navLinks showmenu" : "navLinks"}> */}
-        <div className={show ? "navLinks showmenu" : "navLinks"}>
-          <div className="links">
+
+        <div className="navLinks">
+          <div
+            className={`linksAll ${
+              show && scrollPosition <= 950 ? "show-linksAll" : ""
+            }`}
+          >
             <NavLink to={"/"} activeclassname="active" className="links">
               Home
             </NavLink>
@@ -61,7 +87,11 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="authBtnContainer">
+        <div
+          className={`authBtnContainer ${
+            show && scrollPosition <= 950 ? "show-authBtnContainer" : ""
+          }`}
+        >
           {isAuthenticated ? (
             <button onClick={handleLogout} className="logoutBtn btn">
               Log Out

@@ -1,3 +1,5 @@
+import "./WhyUs.css";
+
 const WhyCard = ({ imgUrl, titleH6, para }) => {
   return (
     <div className="whyCardMain">

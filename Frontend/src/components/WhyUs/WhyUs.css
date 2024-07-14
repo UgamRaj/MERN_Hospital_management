@@ -1,7 +1,7 @@
 .WhyUsMain {
   text-align: center;
   margin-bottom: 4rem;
-  margin-top: 1rem;
+  margin-top: 7rem;
   h3 {
     font-family: "Poppins", Sans-serif;
     font-size: 42px;
@@ -93,16 +93,11 @@
   }
 }
 
-@media (max-width: 710px) {
-  .WhyUsMain {
-    h3 {
-      font-size: 2rem;
-    }
-  }
+@media screen and (max-width: 710px) {
   .WhyUsMain {
     text-align: center;
     margin-bottom: 4rem;
-    margin-top: 1rem;
+    margin-top: 7rem;
   }
   .WhyUsMain {
     h3 {
@@ -120,8 +115,9 @@
   }
 }
 
-@media (max-width: 550px) {
+@media screen and (max-width: 550px) {
   .WhyUsMain {
+    margin-top: 5rem;
     h3 {
       font-size: 1.9rem;
     }
@@ -134,5 +130,33 @@
   .whyCardMain {
     gap: 0.5rem;
     width: 40%;
+  }
+  .whyCardMainContainer {
+    gap: 1rem;
+    width: 99%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .whyCardMain {
+    gap: 0.5rem;
+    width: 40%;
+    .imgCard {
+      width: 60%;
+    }
+  }
+  .whyCardMainContainer {
+    gap: 0.5rem;
+    width: 100%;
+  }
+  .whyCardMain {
+    display: flex;
+    flex-direction: column;
+    padding: 0.4rem;
+    .imgCard {
+      cursor: pointer;
+      width: 100%;
+      /* border: 1px solid red; */
+    }
   }
 }

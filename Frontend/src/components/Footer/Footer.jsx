@@ -46,7 +46,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footerContent">
         <div className="footerlogo">
-          <img src="/logoS.png" alt="logo" className="logo-img" />
+          <img src="/smlogo1.png" alt="logo" className="logo-img" />
         </div>
         <div className="footerQuickLink">
           <h4>Quick Links</h4>
