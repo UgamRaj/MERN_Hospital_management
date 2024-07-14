@@ -4,6 +4,12 @@
 
 [Seervi Medical Institute](https://mern-hospital-management-1.onrender.com/)
 
+![1720962529255](image/README/1720962529255.png)
+
+![1720962540966](image/README/1720962540966.png)
+
+![1720962567341](image/README/1720962567341.png)
+
 ## Admin Dashboard 👇
 
 [Admin Dashboard](https://admin-dashboard-qdw6.onrender.com/)
