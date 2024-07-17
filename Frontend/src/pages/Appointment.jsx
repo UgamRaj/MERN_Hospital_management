@@ -1,4 +1,4 @@
-import AppointmentForm from "../components/AppointmentForm";
+import AppointmentForm from "../components/AppointmentForm/AppointmentForm";
 import Emergency from "../components/Emergency/Emergency";
 import Expert from "../components/Expert/Expert";
 
