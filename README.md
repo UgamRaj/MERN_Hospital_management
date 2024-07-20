@@ -2,7 +2,7 @@
 
 ## Frontend Application 👇
 
-[Seervi Medical Institute](https://mern-hospital-management-1.onrender.com/)
+## [Seervi Medical Institute](https://mern-hospital-management-1.onrender.com/)
 
 ![1720962529255](image/README/1720962529255.png)
 
@@ -12,7 +12,17 @@
 
 ## Admin Dashboard 👇
 
-[Admin Dashboard](https://admin-dashboard-qdw6.onrender.com/)
+## [Admin Dashboard](https://admin-dashboard-qdw6.onrender.com/)
+
+![1721466906103](image/README/1721466906103.png)
+
+![1721466926029](image/README/1721466926029.png)
+
+![1721466936913](image/README/1721466936913.png)
+
+![1721466951034](image/README/1721466951034.png)
+
+![1721466963512](image/README/1721466963512.png)
 
 ## Overview
 
@@ -34,19 +44,16 @@ The Hospital Management System is a comprehensive web application aimed at facil
    - **Endpoint:** `https://mern-hospital-management.onrender.com/api/v1/user/patient`
    - **Method:** GET
    - **Description:** Fetches the currently authenticated patient user.
-
 2. **Get All Doctors**
 
    - **Endpoint:** `https://mern-hospital-management.onrender.com/api/v1/user/doctors`
    - **Method:** GET
    - **Description:** Fetches all doctors available in the system.
-
 3. **Send Message**
 
    - **Endpoint:** `https://mern-hospital-management.onrender.com/api/v1/message/send`
    - **Method:** POST
    - **Description:** Sends a message to the hospital administration.
-
 4. **Book Appointment**
 
    - **Endpoint:** `https://mern-hospital-management.onrender.com/api/v1/appointment/book`
