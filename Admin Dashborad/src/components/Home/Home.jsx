@@ -5,6 +5,7 @@ import axios from "axios";
 import { GoCheckCircleFill } from "react-icons/go";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { toast } from "react-toastify";
+import "./Home.css";
 
 const Home = () => {
   const { isAuthenticated, user, noOfDoctor } = useHospital();

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useHospital } from "../../Context/UserProvider";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
+import "./Message.css";
 
 const Message = () => {
   const [messages, setMessages] = useState([]);
