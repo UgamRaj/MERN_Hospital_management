@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useHospital } from "../Context/UserProvider";
+import { useHospital } from "../../Context/UserProvider";
 import { toast } from "react-toastify";
 import axios from "axios";
 import "./Login.css";
@@ -50,33 +50,41 @@ const Login = () => {
   };
 
   return (
-    <div className="loginSignup">
-      <div className="loginSignupContainer">
-        <h1>Login</h1>
-        <div className="loginSignupFields">
+    <div className="formLoginContainer">
+      <form className="form">
+        <p className="title">Login </p>
+        <p className="message">Login now and get full access to our app. </p>
+
+        <label>
           <input
+            className="input"
             type="email"
+            placeholder=""
+            required
             name="email"
             value={formData.email}
-            placeholder="Email Address"
             onChange={changehandler}
           />
+          <span>Email</span>
+        </label>
+
+        <label>
           <input
+            className="input"
             type="password"
+            placeholder=""
+            required
             name="password"
             value={formData.password}
-            placeholder="Password"
             onChange={changehandler}
           />
-        </div>
-        <button
-          onClick={() => {
-            loginHandler();
-          }}
-        >
+          <span>Password</span>
+        </label>
+
+        <button className="continueBtn" onClick={loginHandler}>
           Continue
         </button>
-      </div>
+      </form>
     </div>
   );
 };

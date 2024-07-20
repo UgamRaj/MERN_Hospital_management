@@ -1,0 +1,112 @@
+.doctors h1 {
+  color: #39bed9f2;
+
+  font-size: 2.3rem;
+}
+
+.doctorsHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.8rem;
+  h2 {
+    color: #fff;
+  }
+  span {
+    color: rgb(238, 67, 101);
+  }
+}
+
+.doctorsCards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  flex-wrap: wrap;
+}
+
+.doctorCard {
+  width: 22rem;
+  /* border: 1px solid red; */
+  background-color: #fff;
+  border-radius: 0.7rem;
+  height: 32rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.doctorImage {
+  overflow: hidden;
+  width: 22rem;
+  height: 20rem;
+  border-radius: 0.7rem 0.7rem 0 0;
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.7rem 0.7rem 0 0;
+    transition: all 0.25s;
+    &:hover {
+      scale: 1.05;
+    }
+  }
+}
+
+.lightText {
+  font-weight: 400;
+}
+.doctorCard h2 {
+  text-align: center;
+  color: blueviolet;
+  margin-top: 0.25rem;
+}
+
+.doctorCardDetails {
+  padding-left: 1.6rem;
+  padding-top: 0.5rem;
+  line-height: 1.6;
+}
+
+/* .doctors .banner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  grid-gap: 20px;
+}
+.doctors .banner .card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.doctors .banner .card img {
+  width: 270px;
+  height: 270px;
+  border-radius: 100%;
+  margin-bottom: 20px;
+}
+.doctors .banner .card h4 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+.doctors .banner .card div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 20px;
+}
+.doctors .banner .card div p {
+  font-weight: 700;
+}
+.doctors .banner .card div p span {
+  font-weight: 500;
+}
+
+@media (max-width: 350px) {
+  .doctors .banner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+    grid-gap: 20px;
+  }
+} */

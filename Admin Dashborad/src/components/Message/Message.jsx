@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useHospital } from "../Context/UserProvider";
+import { useHospital } from "../../Context/UserProvider";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 
@@ -29,22 +29,24 @@ const Message = () => {
   return (
     <div className="page messages">
       <h1>Messages</h1>
-      <div className="banner">
+
+      <div className="messageBoxContainer">
         {messages && messages.length > 0 ? (
           messages.map((message, i) => {
             return (
-              <div className="card" key={i}>
-                <p>First Name: {message.firstName}</p>
-                <p>Last Name: {message.lastName}</p>
+              <div className="messageCard" key={i}>
+                <p className="name">
+                  Name: {message.firstName} {message.lastName}
+                </p>
                 <p>Email: {message.email}</p>
                 <p>Phone: {message.phone}</p>
-                <p>Phone: {message.phone}</p>
-                <p>Message: {message.message}</p>
+                <p>Message: {message.message} </p>
+                <p></p>
               </div>
             );
           })
         ) : (
-          <h1>No message</h1>
+          <h2 style={{ color: "red" }}>No message</h2>
         )}
       </div>
     </div>

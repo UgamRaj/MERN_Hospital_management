@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { useHospital } from "../Context/UserProvider";
+import { useHospital } from "../../Context/UserProvider";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { GoCheckCircleFill } from "react-icons/go";
@@ -53,31 +53,41 @@ const Home = () => {
     <div className="dashboard page">
       <div className="banner">
         <div className="firstBox">
-          <img src="/doc.png" alt="docter" />
+          <div className="firstBoxImage">
+            <img src="./docHolder.jpg" alt="docter" />
+          </div>
           <div className="content">
             <div>
               <p>Hello</p>
-              <h5>{user && `${user.firstName} ${user.lastName}`}</h5>
+              <h5>{user && `${user.firstName} ${user.lastName}`} </h5>
             </div>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-              iure asperiores quas ab dolor repudiandae placeat odio, optio
-              necessitatibus. Praesentium, consequuntur quos obcaecati quia
-              numquam et beatae error voluptatum corporis!
+              Welcome to <span>Seervi Medical Institute</span>
             </p>
           </div>
         </div>
-        <div className="secondBox">
-          <p>Total Appointment</p>
-          <p>{availableAppointment.length}</p>
-        </div>
-        <div className="thirdBox">
-          <p>Registered Doctors</p>
-          <p>{noOfDoctor}</p>
-        </div>
+
+        {/* <div className="secondBox">
+        <p>Total Appointment</p>
+        <p>{availableAppointment.length}</p>
+      </div> */}
+
+        {/* <div className="thirdBox">
+        <p>Registered Doctors</p>
+        <p>{noOfDoctor}</p>
+      </div> */}
       </div>
+
       <div className="banner">
-        <h5>Appointments</h5>
+        <div className="appointBanner">
+          <h5>Appointments</h5>
+          <div className="totalAppoint">
+            <h6>
+              Total <span>{availableAppointment.length}</span>
+            </h6>
+          </div>
+        </div>
+
         <table>
           <thead>
             <tr>

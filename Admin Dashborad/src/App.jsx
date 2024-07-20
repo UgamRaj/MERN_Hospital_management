@@ -1,17 +1,17 @@
 import "./App.css";
 import { useHospital } from "./Context/UserProvider";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
-import Login from "./components/Login";
-import AddDoctor from "./components/AddDoctor";
-import AddAdmin from "./components/AddAdmin";
-import Message from "./components/Message";
-import Doctors from "./components/Doctors";
+import Home from "./components/Home/Home";
+import Login from "./components/Login/Login";
+import AddDoctor from "./components/AddDoctor/AddDoctor";
+import AddAdmin from "./components/AddAdmin/AddAdmin";
+import Message from "./components/Message/Message";
+import Doctors from "./components/Doctors/Doctors";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
 import axios from "axios";
-import SideBar from "./components/SideBar";
+import SideBar from "./components/Sidebar/SideBar";
 
 const App = () => {
   const { setUser, isAuthenticated, setIsAuthenticated } = useHospital();
