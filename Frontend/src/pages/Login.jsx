@@ -37,7 +37,8 @@ const Login = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const loginHandler = async () => {
+  const loginHandler = async (e) => {
+    e.preventDefault();
     setLoading(true);
     console.log("login", formData);
     try {
@@ -68,7 +69,8 @@ const Login = () => {
     }
   };
 
-  const signUpHandler = async () => {
+  const signUpHandler = async (e) => {
+    e.preventDefault();
     setLoading(true);
     console.log("signup", formData);
     try {
@@ -104,7 +106,12 @@ const Login = () => {
         </div>
       )}
       <div className="formContainer">
-        <form className="form">
+        <form
+          className="form"
+          onSubmit={(e) => {
+            state === "Sign In" ? loginHandler(e) : signUpHandler(e);
+          }}
+        >
           <p className="title">{state}</p>
           <p className="message">{state} now and get full access to our app.</p>
           {state == "Sign Up" && (
@@ -217,12 +224,7 @@ const Login = () => {
             </button>
           </label>
 
-          <button
-            className="submit"
-            onClick={() => {
-              state == "Login" ? loginHandler() : signUpHandler();
-            }}
-          >
+          <button className="submit" type="submit">
             Submit
           </button>
 
