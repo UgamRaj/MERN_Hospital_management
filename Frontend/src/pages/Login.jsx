@@ -6,12 +6,14 @@ import "./Login.css";
 import { Navigate, useNavigate } from "react-router-dom";
 import { IoEye } from "react-icons/io5";
 import { IoMdEyeOff } from "react-icons/io";
+import Loader from "../components/Loader/Loader";
 
 const Login = () => {
   const navigate = useNavigate();
   const { isAuthenticated, setIsAuthenticated } = useHospital();
   const [state, setState] = useState("Sign In");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -36,6 +38,7 @@ const Login = () => {
   };
 
   const loginHandler = async () => {
+    setLoading(true);
     console.log("login", formData);
     try {
       const response = await axios.post(
@@ -53,6 +56,7 @@ const Login = () => {
       const responseData = response.data;
 
       if (responseData.success) {
+        setLoading(false);
         toast.success(responseData.message);
         setIsAuthenticated(true);
         navigate("/");
@@ -60,9 +64,12 @@ const Login = () => {
     } catch (error) {
       toast.error(error.response.data.message);
       console.error("Error:", error);
+      setLoading(false);
     }
   };
+
   const signUpHandler = async () => {
+    setLoading(true);
     console.log("signup", formData);
     try {
       const response = await axios.post(
@@ -77,153 +84,162 @@ const Login = () => {
       );
       const responseData = response.data;
       if (responseData.success) {
+        setLoading(false);
         toast.success(responseData.message);
         setIsAuthenticated(true);
         navigate("/");
       }
     } catch (error) {
       toast.error(error.response.data.message);
+      setLoading(false);
       // console.error("Error:", error);
     }
   };
 
   return (
-    <div className="formContainer">
-      <form className="form">
-        <p className="title">{state}</p>
-        <p className="message">{state} now and get full access to our app.</p>
-        {state == "Sign Up" && (
-          <>
-            <div className="flex">
+    <>
+      {loading && (
+        <div className="loader-overlay">
+          <Loader />
+        </div>
+      )}
+      <div className="formContainer">
+        <form className="form">
+          <p className="title">{state}</p>
+          <p className="message">{state} now and get full access to our app.</p>
+          {state == "Sign Up" && (
+            <>
+              <div className="flex">
+                <label>
+                  <input
+                    className="input"
+                    type="text"
+                    placeholder=""
+                    required
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={changehandler}
+                  />
+                  <span>Firstname</span>
+                </label>
+
+                <label>
+                  <input
+                    className="input"
+                    type="text"
+                    placeholder=""
+                    required
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={changehandler}
+                  />
+                  <span>Lastname</span>
+                </label>
+              </div>
+
               <label>
                 <input
                   className="input"
-                  type="text"
+                  type="number"
                   placeholder=""
                   required
-                  name="firstName"
-                  value={formData.firstName}
+                  name="phone"
+                  value={formData.phone}
                   onChange={changehandler}
                 />
-                <span>Firstname</span>
+                <span>Phone Number</span>
               </label>
 
               <label>
                 <input
                   className="input"
-                  type="text"
+                  type="number"
                   placeholder=""
                   required
-                  name="lastName"
-                  value={formData.lastName}
+                  name="age"
+                  value={formData.age}
                   onChange={changehandler}
                 />
-                <span>Lastname</span>
+                <span>Age</span>
               </label>
-            </div>
+              <label>
+                <select
+                  className="select"
+                  name="gender"
+                  value={formData.gender}
+                  onChange={changehandler}
+                >
+                  <option value="" className="lightOption">
+                    Select Gender
+                  </option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+                <span>Select Gender</span>
+              </label>
+            </>
+          )}
+          <label>
+            <input
+              className="input"
+              type="email"
+              placeholder=""
+              required
+              name="email"
+              value={formData.email}
+              onChange={changehandler}
+            />
+            <span>Email</span>
+          </label>
 
-            <label>
-              <input
-                className="input"
-                type="number"
-                placeholder=""
-                required
-                name="phone"
-                value={formData.phone}
-                onChange={changehandler}
-              />
-              <span>Phone Number</span>
-            </label>
+          <label>
+            <input
+              className="input"
+              type={showPassword ? "text" : "password"}
+              placeholder=""
+              required
+              name="password"
+              value={formData.password}
+              onChange={changehandler}
+            />
+            <span>Password</span>
+            <button
+              type="button"
+              className="toggle-button"
+              onClick={togglePasswordVisibility}
+            >
+              {showPassword ? (
+                <IoEye size={"1.5rem"} color="gray" />
+              ) : (
+                <IoMdEyeOff size={"1.5rem"} color="gray" />
+              )}
+            </button>
+          </label>
 
-            <label>
-              <input
-                className="input"
-                type="number"
-                placeholder=""
-                required
-                name="age"
-                value={formData.age}
-                onChange={changehandler}
-              />
-              <span>Age</span>
-            </label>
-            <label>
-              <select
-                className="select"
-                name="gender"
-                value={formData.gender}
-                onChange={changehandler}
-              >
-                <option value="" className="lightOption">
-                  Select Gender
-                </option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-              </select>
-              <span>Select Gender</span>
-            </label>
-          </>
-        )}
-        <label>
-          <input
-            className="input"
-            type="email"
-            placeholder=""
-            required
-            name="email"
-            value={formData.email}
-            onChange={changehandler}
-          />
-          <span>Email</span>
-        </label>
-
-        <label>
-          <input
-            className="input"
-            type={showPassword ? "text" : "password"}
-            placeholder=""
-            required
-            name="password"
-            value={formData.password}
-            onChange={changehandler}
-          />
-          <span>Password</span>
           <button
-            type="button"
-            className="toggle-button"
-            onClick={togglePasswordVisibility}
+            className="submit"
+            onClick={() => {
+              state == "Login" ? loginHandler() : signUpHandler();
+            }}
           >
-            {showPassword ? (
-              <IoEye size={"1.5rem"} color="gray" />
-            ) : (
-              <IoMdEyeOff size={"1.5rem"} color="gray" />
-            )}
+            Submit
           </button>
-        </label>
 
-        <button
-          className="submit"
-          onClick={() => {
-            state == "Login" ? loginHandler() : signUpHandler();
-          }}
-        >
-          Submit
-        </button>
-
-        {state === "Sign Up" ? (
-          <p className="signin">
-            Already have an account?
-            <span onClick={() => setState("Login")}>Signin</span>
-          </p>
-        ) : (
-          <p className="signin">
-            Create an account?
-            <span onClick={() => setState("Sign Up")}>Register</span>
-          </p>
-        )}
-      </form>
-    </div>
+          {state === "Sign Up" ? (
+            <p className="signin">
+              Already have an account?
+              <span onClick={() => setState("Login")}>Signin</span>
+            </p>
+          ) : (
+            <p className="signin">
+              Create an account?
+              <span onClick={() => setState("Sign Up")}>Register</span>
+            </p>
+          )}
+        </form>
+      </div>
+    </>
     // <div className="loginSignup">
     //   <div className="loginSignupContainer">
     //     <h1>{state}</h1>
