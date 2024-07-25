@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import Loader from "./Loader/Loader";
 
 const MessageForm = () => {
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -21,6 +23,7 @@ const MessageForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     // You can handle form submission here
     // console.log(formData);
     try {
@@ -34,6 +37,7 @@ const MessageForm = () => {
       );
       // console.log("🚀 ~ handleSubmit ~ res:", res);
       if (res.data.success) {
+        setLoading(false);
         toast.success(res.data.message);
         setFormData({
           firstName: "",
@@ -45,64 +49,73 @@ const MessageForm = () => {
       }
     } catch (error) {
       // console.log("🚀 ~ handleSubmit ~ error:", error);
+      setLoading(false);
       toast.error(error.response.data.message);
     }
   };
 
   return (
-    <div className="container form-component message-form">
-      <h2>Send Us A Message</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input
-            type="text"
-            name="firstName"
-            placeholder="First Name"
-            value={formData.firstName}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="lastName"
-            placeholder="Last Name"
-            value={formData.lastName}
-            onChange={handleChange}
-          />
+    <>
+      {loading && (
+        <div className="loader-overlay">
+          <Loader />
         </div>
-        <div>
-          <input
+      )}
+
+      <div className="container form-component message-form">
+        <h2>Send Us A Message</h2>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <input
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              value={formData.firstName}
+              onChange={handleChange}
+            />
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              value={formData.lastName}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+            <input
+              type="number"
+              name="phone"
+              placeholder="Phone Number"
+              value={formData.phone}
+              onChange={handleChange}
+            />
+          </div>
+          <textarea
             type="text"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
+            rows="7"
+            name="message"
+            placeholder="Type Your Message here ..."
+            value={formData.message}
             onChange={handleChange}
           />
-          <input
-            type="number"
-            name="phone"
-            placeholder="Phone Number"
-            value={formData.phone}
-            onChange={handleChange}
-          />
-        </div>
-        <textarea
-          type="text"
-          rows="7"
-          name="message"
-          placeholder="Type Your Message here ..."
-          value={formData.message}
-          onChange={handleChange}
-        />
-        <div
-          className="submitBtnContainer"
-          style={{ justifyContent: "center", alignItems: "center" }}
-        >
-          <button className="SubmitBtn" type="submit">
-            Send
-          </button>
-        </div>
-      </form>
-    </div>
+          <div
+            className="submitBtnContainer"
+            style={{ justifyContent: "center", alignItems: "center" }}
+          >
+            <button className="SubmitBtn" type="submit">
+              Send
+            </button>
+          </div>
+        </form>
+      </div>
+    </>
   );
 };
 
