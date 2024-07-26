@@ -1,6 +1,6 @@
 # Hospital Management Application
 
-## Frontend Application 👇
+## Frontend Application Link👇
 
 ## [Seervi Medical Institute](https://mern-hospital-management-1.onrender.com/)
 
@@ -10,7 +10,7 @@
 
 ![1720962567341](image/README/1720962567341.png)
 
-## Admin Dashboard 👇
+## Admin Dashboard  Link👇
 
 ## [Admin Dashboard](https://admin-dashboard-qdw6.onrender.com/)
 
