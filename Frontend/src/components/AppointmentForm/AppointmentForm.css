@@ -3,10 +3,16 @@
   height: 55rem;
 }
 
-.appointmentContainer h1 {
+.appointFormMain h1 {
   text-align: center;
   margin-top: 6.4px;
   margin-bottom: 1rem;
+  font-weight: 600;
+  color: #000;
+  background: -webkit-linear-gradient(rgb(188, 12, 241), rgb(216, 54, 54));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .appointmentContainer .login-box {
