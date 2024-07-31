@@ -21,8 +21,9 @@ const Login = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const loginHandler = async () => {
-    console.log("login", formData);
+  const loginHandler = async (e) => {
+    e.preventDefault();
+    // console.log("login", formData);
     try {
       const response = await axios.post(
         "https://mern-hospital-management.onrender.com/api/v1/user/login",
