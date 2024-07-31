@@ -51,7 +51,7 @@ const Login = () => {
 
   return (
     <div className="formLoginContainer">
-      <form className="form">
+      <form className="form" onSubmit={loginHandler}>
         <p className="title">Login </p>
         <p className="message">Login now and get full access to our app. </p>
 
@@ -81,7 +81,7 @@ const Login = () => {
           <span>Password</span>
         </label>
 
-        <button className="continueBtn" onClick={loginHandler}>
+        <button className="continueBtn" type="submit">
           Continue
         </button>
       </form>
