@@ -27,6 +27,7 @@ const Navbar = () => {
         setLoading(false);
         toast.success(res.data.message);
         setIsAuthenticated(false);
+        navigate("/");
       }
     } catch (error) {
       //   console.log("🚀 ~ handleLogout ~ error:", error);
