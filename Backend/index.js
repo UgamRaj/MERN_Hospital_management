@@ -10,7 +10,6 @@ import userRoute from "./routes/userRoute.js";
 import appointmentRoute from "./routes/appointmentRoute.js";
 
 import { errorMiddleware } from "./middleware/errorMiddleware.js";
-// import multer from "multer";
 
 const app = express();
 dotenv.config();
@@ -35,14 +34,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-// app.use(
-//   cors({
-//     origin: [process.env.FRONTED_URL, process.env.DASHBORAD_URL],
-//     methods: ["GET", "POST", "PUT", "DELETE"],
-//     credentials: true,
-//     optionsSuccessStatus: 200,
-//   })
-// );
 
 app.use("/api/v1/message", messageRoute);
 app.use("/api/v1/user", userRoute);
@@ -51,31 +42,6 @@ app.use("/api/v1/appointment", appointmentRoute);
 connectDB(DATABASE_URL, DB_NAME);
 
 //! Image Storage Engine
-//! multer-----------
-// const storage = multer.diskStorage({
-//   destination: "./upload/images",
-//   filename: (req, file, cb) => {
-//     return cb(
-//       null,
-//       `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`
-//     );
-//   },
-// });
-
-// const upload = multer({ storage: storage });
-
-// app.use("/images", express.static("upload/images"));
-// app.post("/upload", upload.single("product"), (req, res) => {
-//   console.log(
-//     `http://localhost:${process.env.PORT}/images/${req.file.filename}`
-//   );
-//   res.json({
-//     success: true,
-//     imageUrl: `http://localhost:${process.env.PORT}/images/${req.file.filename}`,
-//   });
-// });
-
-//! multer-----------
 
 cloudinary.v2.config({
   cloud_name: process.env.CLOUDINARY_NAME,
@@ -88,9 +54,3 @@ app.use(errorMiddleware);
 app.listen(PORT, () => {
   console.log(`server listioning at http://localhost:${PORT}`);
 });
-
-//HOSPITAL_MANAGEMENT_SYSTEM
-
-//pass=rajseervi
-//username=ugamraj
-//mongodb+srv://ugamraj:rajseervi@cluster0.pk73hb7.mongodb.net/
