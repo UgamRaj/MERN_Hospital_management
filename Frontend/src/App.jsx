@@ -15,21 +15,22 @@ import Footer from "./components/Footer/Footer";
 const App = () => {
   const { setUser, isAuthenticated, setIsAuthenticated } = useHospital();
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await axios.get(
-          "https://mern-hospital-management.onrender.com/api/v1/user/patient",
-          { withCredentials: true }
-        );
+  const fetchUser = async () => {
+    try {
+      const response = await axios.get(
+        "https://mern-hospital-management.onrender.com/api/v1/user/patient",
+        { withCredentials: true }
+      );
 
-        setIsAuthenticated(true);
-        setUser(response.data.user);
-      } catch (error) {
-        setIsAuthenticated(false);
-        setUser({});
-      }
-    };
+      setIsAuthenticated(true);
+      setUser(response.data.user);
+    } catch (error) {
+      setIsAuthenticated(false);
+      setUser({});
+    }
+  };
+
+  useEffect(() => {
     fetchUser();
   }, [isAuthenticated]);
 
